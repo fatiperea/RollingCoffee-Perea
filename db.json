@@ -1,0 +1,30 @@
+{
+    "productos":[
+        {
+            "nombreProducto": "cafe", 
+            "precio": 1000,
+            "categoria": "infusiones",
+            "descripcion-breve":"cafe",
+            "descripcion-amplia":"bebida de cafe concentrada y aromatica ",
+            "imagen": "",
+            "disponibilidad": true,
+            "id":"1"
+        },
+        {
+            "nombreProducto": "te", 
+            "precio": 1000,
+            "categoria": "infusiones",
+            "descripcion-breve":"te",
+            "descripcion-amplia":"bebida de cafe concentrada y aromatica ",
+            "imagen": "",
+            "disponibilidad": true,
+            "id":"2"
+        }
+    ],
+   "usuarios" : [
+    {
+        "email":"nombre@gmail.com",
+        "pasword":"123"
+    }
+   ]
+}
