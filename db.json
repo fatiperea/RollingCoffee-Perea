@@ -6,7 +6,7 @@
             "categoria": "infusiones",
             "descripcion-breve":"cafe",
             "descripcion-amplia":"bebida de cafe concentrada y aromatica ",
-            "imagen": "",
+            "imagen": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
             "disponibilidad": true,
             "id":"1"
         },
@@ -16,7 +16,7 @@
             "categoria": "infusiones",
             "descripcion-breve":"te",
             "descripcion-amplia":"bebida de cafe concentrada y aromatica ",
-            "imagen": "",
+            "imagen": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
             "disponibilidad": true,
             "id":"2"
         }
