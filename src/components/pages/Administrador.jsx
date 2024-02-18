@@ -1,15 +1,30 @@
-import {Table, Button} from "react-bootstrap";
+
+import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-
+import { useState, useEffect } from "react";
+import {leerProduAPI} from "../../helpers/queries.js";
 
 const Administrador = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    traerProductos();
+  }, []);
+
+  const traerProductos=async()=>{
+    try{
+      await leerProduAPI();
+    }catch(error){console.log(error)}
+  }
+
   return (
     <section>
       <div className="d-flex justify-content-between align-items-center">
-      <h1 className="my-4">Productos Disponibles</h1>
-      <Button as={Link} to={"/crear"}><i className="bi bi-file-earmark-plus-fill"  ></i></Button>
-      </div>  
+        <h1 className="my-4">Productos Disponibles</h1>
+        <Button as={Link} to={"/crear"}>
+          <i className="bi bi-file-earmark-plus-fill"></i>
+        </Button>
+      </div>
       <Table striped bordered hover>
         <thead className="text-center">
           <tr>
@@ -29,11 +44,14 @@ const Administrador = () => {
             <td></td>
             <td></td>
             <td>
-                <Button className="m-1" variant="warning"><i className="bi bi-pencil-square"></i></Button>
-                <Button className="m-1" variant="danger"><i className="bi bi-trash3-fill"></i></Button>
+              <Button className="m-1" variant="warning">
+                <i className="bi bi-pencil-square"></i>
+              </Button>
+              <Button className="m-1" variant="danger">
+                <i className="bi bi-trash3-fill"></i>
+              </Button>
             </td>
           </tr>
-          
         </tbody>
       </Table>
     </section>
