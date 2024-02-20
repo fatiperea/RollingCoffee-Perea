@@ -1,19 +1,22 @@
 
 import { Table, Button } from "react-bootstrap";
+import ItemProducto from "./ItemProducto.jsx";
+<ItemProducto className="jsx"></ItemProducto>
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {leerProduAPI} from "../../helpers/queries.js";
 
 const Administrador = () => {
   const [productos, setProductos] = useState([]);
-
+ 
   useEffect(() => {
     traerProductos();
   }, []);
 
   const traerProductos=async()=>{
     try{
-      await leerProduAPI();
+      const listaProduAPI= await leerProduAPI();
+      setProductos(listaProduAPI)
     }catch(error){console.log(error)}
   }
 
@@ -37,7 +40,10 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+         {
+            productos.map((producto)=><ItemProducto key={producto.id} producto={producto}></ItemProducto>)
+          
+         /* <tr>
             <td>1</td>
             <td></td>
             <td></td>
@@ -51,7 +57,7 @@ const Administrador = () => {
                 <i className="bi bi-trash3-fill"></i>
               </Button>
             </td>
-          </tr>
+  </tr>*/}
         </tbody>
       </Table>
     </section>
