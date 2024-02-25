@@ -1,8 +1,10 @@
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { borrarProductoAPI } from "../../helpers/queries";
+import { borrarProductoAPI, leerProduAPI } from "../../helpers/queries";
+//import {setProductos} from "../pages/Administrador"
 
-const ItemProducto = ({ producto }) => {
+
+const ItemProducto = ({ producto, setProductos }) => {
   const borrarProdu = () => {
     Swal.fire({
       title: "Estas seguro de que quieres eliminar?",
@@ -17,7 +19,10 @@ const ItemProducto = ({ producto }) => {
       if (result.isConfirmed) {
        const respuesta=await borrarProductoAPI(producto.id);
        if(respuesta===200)
-        {Swal.fire({
+        {
+          const actualizados=await leerProduAPI();
+          setProductos(actualizados);
+          Swal.fire({
           title: "Producto eliminado",
           text: `El "${producto.id} "fue eliminado correctamente`,
           icon: "success",

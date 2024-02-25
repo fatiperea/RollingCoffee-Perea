@@ -87,9 +87,9 @@ const CrearProducto = () => {
             {...register("imagen", {
               required: "La URL de imagen del producto es obligatoria",
               pattern: {
-                value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
+          value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/,
               },
-              message: "Ingresar URL valida (jpg|gif|png)",
+              message: "Ingresar URL valida (jpg|jpeg|gif|png)",
             })}
           />
           <Form.Text className="text-danger">
@@ -127,7 +127,7 @@ const CrearProducto = () => {
             //required
             {...register("descripcion_breve", {
               required: "La descripcion del producto es obligatorio",
-              minLength: { value: 20, message: "20 caracteres minimo" },
+              minLength: { value: 5, message: "5 caracteres minimo" },
               maxLength: { value: 50, message: "50 caracteres maximo" },
             })}
           />
@@ -144,7 +144,7 @@ const CrearProducto = () => {
             {...register("descripcion_amplia", {
               required: "La descripcion amplia del producto es obligatoria",
               minLength: { value: 30, message: "30 caracteres minimo" },
-              maxLength: { value: 100, message: "60 caracteres maximo" },
+              maxLength: { value: 150, message: "60 caracteres maximo" },
             })}
           />
           <Form.Text className="text-danger">

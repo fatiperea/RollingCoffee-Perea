@@ -38,7 +38,12 @@ function App() {
           <Route
             exact
             path="administrador/crear"
-            element={<CrearProducto></CrearProducto>}
+            element={<CrearProducto editar={false} titulo="Nuevo producto"></CrearProducto>}
+          ></Route>
+          <Route
+            exact
+            path="administrador/editar/:id"
+            element={<CrearProducto editar={false} titulo="Editar producto"></CrearProducto>}
           ></Route>
           {/*<Route
             exact
@@ -46,12 +51,13 @@ function App() {
             element={<Administrador></Administrador>}
 ></Route>*/}
           <Route path="*" element={<Error404></Error404>}></Route>
-        </Routes>
-        <Route
+          <Route
             exact
             path="/login"
             element={<Login></Login>}
           ></Route>
+        </Routes>
+        
       </Container>
       <Footer></Footer>
     </BrowserRouter>

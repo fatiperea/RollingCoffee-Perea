@@ -27,6 +27,15 @@
       "categoria": "infusiones",
       "descripcion_breve": "Bebida de origen chino",
       "descripcion_amplia": "Deriva de las hojas de Camellia sinensis, apreciado por su sabor y sus beneficios para la salúd."
+    },
+    {
+      "id": "bb12",
+      "nombreProducto": "Café",
+      "precio": "1200",
+      "imagen": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg",
+      "categoria": "infusiones",
+      "descripcion_breve": "Café negro",
+      "descripcion_amplia": "Bebida de café concentrada y aromática que se prepara haciendo pasar agua caliente a alta presión por granos de café muy finamente molidos."
     }
   ],
   "usuarios": [
