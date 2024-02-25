@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { crearProductoAPI } from "../../helpers/queries";
 import Swal from "sweetalert2";
 
-const CrearProducto = () => {
+const CrearProducto = ({ editar, titulo }) => {
   const {
     register,
     handleSubmit,
@@ -11,33 +11,35 @@ const CrearProducto = () => {
     reset,
   } = useForm();
 
-  //const productoValidado = (producto) => {
-    const productoValidado = async (producto) => {
-      console.log(producto);
+  
+  const productoValidado = async (producto) => {
+    console.log(producto);
+    if (editar) {
+    } else {
       const respuesta = await crearProductoAPI(producto);
       if (respuesta.status === 201) {
         //mensaje para el usuario
         //console.log("producto creado");
         Swal.fire({
-          title:"Producto creado",
-          text:`El producto" ${producto.nombreProducto}" fue creado correctamente`,
-          icon:"success",
-        })
+          title: "Producto creado",
+          text: `El producto" ${producto.nombreProducto}" fue creado correctamente`,
+          icon: "success",
+        });
         reset();
       } else {
         //console.log("ocurrio un error");
         Swal.fire({
-          title:"Ocurrio un error",
-          text:"Intentelo mas tarde",
-          icon:"error",
-        })
+          title: "Ocurrio un error",
+          text: "Intentelo mas tarde",
+          icon: "error",
+        });
       }
-    };
-  
+    }
+  };
 
   return (
     <section>
-      <h1>Nuevo Producto</h1> <hr />
+      <h1>{titulo}</h1> <hr />
       <Form className="my-4" onSubmit={handleSubmit(productoValidado)}>
         <Form.Group className="mb-3" controlId="formProdu">
           <Form.Label>Producto *</Form.Label>
@@ -87,7 +89,7 @@ const CrearProducto = () => {
             {...register("imagen", {
               required: "La URL de imagen del producto es obligatoria",
               pattern: {
-          value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/,
+                value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/,
               },
               message: "Ingresar URL valida (jpg|jpeg|gif|png)",
             })}

@@ -36,6 +36,15 @@
       "categoria": "infusiones",
       "descripcion_breve": "Café negro",
       "descripcion_amplia": "Bebida de café concentrada y aromática que se prepara haciendo pasar agua caliente a alta presión por granos de café muy finamente molidos."
+    },
+    {
+      "id": "ad4e",
+      "nombreProducto": "Té",
+      "precio": "500",
+      "imagen": "https://images.pexels.com/photos/814264/pexels-photo-814264.jpeg",
+      "categoria": "infusiones",
+      "descripcion_breve": "Té negro",
+      "descripcion_amplia": "Infusión de las hojas y brotes de la planta del té. Su sabor es fresco, ligeramente amargo y astringente;"
     }
   ],
   "usuarios": [

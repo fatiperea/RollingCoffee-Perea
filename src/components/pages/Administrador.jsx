@@ -24,7 +24,7 @@ const Administrador = () => {
     <section>
       <div className="d-flex justify-content-between align-items-center">
         <h1 className="my-4">Productos Disponibles</h1>
-        <Button as={Link} to={"/crear"}>
+        <Button as={Link} to={"/administrador/crear"}>
           <i className="bi bi-file-earmark-plus-fill"></i>
         </Button>
       </div>
