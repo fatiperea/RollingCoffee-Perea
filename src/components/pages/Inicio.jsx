@@ -7,6 +7,20 @@ import { Link } from "react-router-dom";
 //const imgb='https://www.istockphoto.com/es/foto/tazas-de-caf%C3%A9-gm472113574-63201109'
 
 const Inicio = () => {
+
+  const [productos, setProductos] = useState([]);
+ 
+  useEffect(() => {
+    traerProductos();
+  }, []);
+
+  const traerProductos=async()=>{
+    try{
+      const listaProduAPI= await leerProduAPI();
+      setProductos(listaProduAPI);
+    }catch(error){console.log(error)}
+  }
+
   return (
     <section>
       <div id="contenBanner">

@@ -36,7 +36,7 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/crear"
+            path="administrador/crear"
             element={<CrearProducto></CrearProducto>}
           ></Route>
           {/*<Route
