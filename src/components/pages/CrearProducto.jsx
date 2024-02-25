@@ -1,8 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-//import { crearProductoAPI } from "../../helpers/queries";
-
-//const CrearProducto = () => {
+import { crearProductoAPI } from "../../helpers/queries";
 
 const CrearProducto = () => {
   const {
@@ -12,19 +10,19 @@ const CrearProducto = () => {
     reset,
   } = useForm();
 
-  const productoValidado = (producto) => {
+  //const productoValidado = (producto) => {
     const productoValidado = async (producto) => {
       console.log(producto);
-      /*const respuesta = await crearProductoAPI(producto);
+      const respuesta = await crearProductoAPI(producto);
       if (respuesta.status === 201) {
         //mensaje para el usuario
         console.log("producto creado");
         reset();
       } else {
         console.log("ocurrio un error");
-      }*/
+      }
     };
-  };
+  
 
   return (
     <section>
@@ -42,9 +40,10 @@ const CrearProducto = () => {
               minLength: { value: 2, message: "2 caracteres minimo" },
               maxLength: { value: 30, message: "30 caracteres maximo" },
             })}
-            
           />
-          <Form.Text className="text-danger">{errors.nombreProducto?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.nombreProducto?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPrecio">
@@ -57,11 +56,13 @@ const CrearProducto = () => {
             //required
             {...register("precio", {
               required: "El precio del producto es obligatorio",
-              min: { value: 300, message: "$300 es el monto minimo" },
-              max: { value: 100000, message: "$100000 es el monto maximo" },
+              min: { value: 100, message: "$100 es el monto minimo" },
+              max: { value: 10000, message: "$10000 es el monto maximo" },
             })}
           />
-          <Form.Text className="text-danger">{errors.precio?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.precio?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formImg">
@@ -73,23 +74,36 @@ const CrearProducto = () => {
             minLength={10}
             //required
             {...register("imagen", {
-              required: "La imagen del producto es obligatoria",
-              minLength: { value: 10, message: "10 caracteres minimo" },
-              maxLength: { value: 50, message: "50 caracteres maximo" },
+              required: "La URL de imagen del producto es obligatoria",
+              pattern: {
+                value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
+              },
+              message: "Ingresar URL valida (jpg|gif|png)",
             })}
           />
-          <Form.Text className="text-danger">{errors.imagen?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.imagen?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formCateg">
           <Form.Label>Categoría *</Form.Label>
-          <Form.Select aria-label="" required>
-            <option>Seleccionar opción</option>
-            <option value="1">Dulce</option>
-            <option value="2">Salado</option>
-            <option value="3">Mixto</option>
+          <Form.Select
+            aria-label=""
+            required
+            {...register("categoria", {
+              required: "La categgoría del producto es obligatoria",
+            })}
+          >
+            <option value="">Seleccionar opción</option>
+            <option value="dulce">Dulce</option>
+            <option value="salado">Salado</option>
+            <option value="infusiones">Infusiones</option>
+            <option value="batidos">Batidos</option>
           </Form.Select>
-          <Form.Text className="text-danger">{errors.categoria?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.categoria?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formDescrip">
@@ -106,19 +120,25 @@ const CrearProducto = () => {
               maxLength: { value: 50, message: "50 caracteres maximo" },
             })}
           />
-          <Form.Text className="text-danger">{errors.descripcion_breve?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.descripcion_breve?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formDescripAmplia">
           <Form.Label>Descripcion Amplia *</Form.Label>
-          <Form.Control as="textarea" rows={3} //required 
-          {...register("descripcion_amplia", {
-            required: "La descripcion amplia del producto es obligatoria",
-            minLength: { value: 30, message: "30 caracteres minimo" },
-            maxLength: { value: 60, message: "60 caracteres maximo" },
-          })}
+          <Form.Control
+            as="textarea"
+            rows={3} //required
+            {...register("descripcion_amplia", {
+              required: "La descripcion amplia del producto es obligatoria",
+              minLength: { value: 30, message: "30 caracteres minimo" },
+              maxLength: { value: 60, message: "60 caracteres maximo" },
+            })}
           />
-          <Form.Text className="text-danger">{errors.descripcion_amplia?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.descripcion_amplia?.message}
+          </Form.Text>
         </Form.Group>
 
         <Button className="btnColor" type="submit">
