@@ -11,16 +11,6 @@
       "id": "1"
     },
     {
-      "nombreProducto": "te",
-      "precio": 1000,
-      "categoria": "infusiones",
-      "descripcion-breve": "te",
-      "descripcion-amplia": "bebida de cafe concentrada y aromatica ",
-      "imagen": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "disponibilidad": true,
-      "id": "2"
-    },
-    {
       "id": "395d",
       "nombreProducto": "medialuna",
       "precio": "300",
@@ -28,6 +18,15 @@
       "categoria": "dulce",
       "descripcion_breve": "medialuna ----- ------ -----",
       "descripcion_amplia": "------- ---------- ------ --------------------"
+    },
+    {
+      "id": "b505",
+      "nombreProducto": "Té verde",
+      "precio": "500",
+      "imagen": "https://img.freepik.com/foto-gratis/placa-madera-hoja-objeto-alimentacion-saludable_1172-451.jpg",
+      "categoria": "infusiones",
+      "descripcion_breve": "Bebida de origen chino",
+      "descripcion_amplia": "Deriva de las hojas de Camellia sinensis, apreciado por su sabor y sus beneficios para la salúd."
     }
   ],
   "usuarios": [

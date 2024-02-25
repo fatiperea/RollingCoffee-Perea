@@ -12,6 +12,7 @@ import Error404 from "./components/pages/Error404";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Detalle from "./components/pages/Detalle";
 import CrearProducto from "./components/pages/CrearProducto";
+import Login from "./components/pages/Login";
 
 
 function App() {
@@ -46,6 +47,11 @@ function App() {
 ></Route>*/}
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>
+        <Route
+            exact
+            path="/login"
+            element={<Login></Login>}
+          ></Route>
       </Container>
       <Footer></Footer>
     </BrowserRouter>

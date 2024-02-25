@@ -20,7 +20,7 @@ const CrearProducto = () => {
         //console.log("producto creado");
         Swal.fire({
           title:"Producto creado",
-          text:'El producto ${producto.nombreProducto} fue credo correctamente',
+          text:`El producto" ${producto.nombreProducto}" fue creado correctamente`,
           icon:"success",
         })
         reset();
@@ -144,7 +144,7 @@ const CrearProducto = () => {
             {...register("descripcion_amplia", {
               required: "La descripcion amplia del producto es obligatoria",
               minLength: { value: 30, message: "30 caracteres minimo" },
-              maxLength: { value: 60, message: "60 caracteres maximo" },
+              maxLength: { value: 100, message: "60 caracteres maximo" },
             })}
           />
           <Form.Text className="text-danger">
