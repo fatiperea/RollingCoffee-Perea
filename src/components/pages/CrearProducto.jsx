@@ -1,6 +1,7 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { crearProductoAPI } from "../../helpers/queries";
+import Swal from "sweetalert2";
 
 const CrearProducto = () => {
   const {
@@ -16,10 +17,20 @@ const CrearProducto = () => {
       const respuesta = await crearProductoAPI(producto);
       if (respuesta.status === 201) {
         //mensaje para el usuario
-        console.log("producto creado");
+        //console.log("producto creado");
+        Swal.fire({
+          title:"Producto creado",
+          text:'El producto ${producto.nombreProducto} fue credo correctamente',
+          icon:"success",
+        })
         reset();
       } else {
-        console.log("ocurrio un error");
+        //console.log("ocurrio un error");
+        Swal.fire({
+          title:"Ocurrio un error",
+          text:"Intentelo mas tarde",
+          icon:"error",
+        })
       }
     };
   
@@ -70,7 +81,7 @@ const CrearProducto = () => {
           <Form.Control
             type="text"
             placeholder="URL"
-            maxLength={50}
+            maxLength={100}
             minLength={10}
             //required
             {...register("imagen", {

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Inicio = () => {
 
-  const [productos, setProductos] = useState([]);
+  /*const [productos, setProductos] = useState([]);
  
   useEffect(() => {
     traerProductos();
@@ -19,7 +19,7 @@ const Inicio = () => {
       const listaProduAPI= await leerProduAPI();
       setProductos(listaProduAPI);
     }catch(error){console.log(error)}
-  }
+  }*/
 
   return (
     <section>
