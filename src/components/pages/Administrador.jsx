@@ -43,21 +43,7 @@ const Administrador = () => {
          {
             productos.map((producto)=><ItemProducto key={producto.id} producto={producto} setProductos={setProductos}></ItemProducto>)
           
-         /* <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <Button className="m-1" variant="warning">
-                <i className="bi bi-pencil-square"></i>
-              </Button>
-              <Button className="m-1" variant="danger">
-                <i className="bi bi-trash3-fill"></i>
-              </Button>
-            </td>
-  </tr>*/}
+         }
         </tbody>
       </Table>
     </section>

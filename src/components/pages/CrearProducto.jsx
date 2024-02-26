@@ -1,7 +1,9 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearProductoAPI } from "../../helpers/queries";
+import { crearProductoAPI, leerUnProduAPI, editarProductoAPI } from "../../helpers/queries";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 
 const CrearProducto = ({ editar, titulo }) => {
   const {
@@ -9,12 +11,49 @@ const CrearProducto = ({ editar, titulo }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue
   } = useForm();
 
-  
-  const productoValidado = async (producto) => {
-    console.log(producto);
+  const { id } = useParams();
+
+  useEffect(() => {
+    
     if (editar) {
+      
+      cargarForm();
+    }
+  }, []);
+
+  const cargarForm = async () => {
+    console.log("ESTE ES EL ID",id);
+    const respuesta = await leerUnProduAPI(id);
+    if(respuesta.status === 200)
+    {
+      const buscado=await respuesta.json();
+      console.log("buscado: ",buscado);
+      setValue("nombreProducto", buscado.nombreProducto);
+      setValue("precio", buscado.precio);
+      setValue("categoria",buscado.categoria);
+      setValue("descripcion_breve", buscado.descripcion_breve);
+      setValue("descripcion_amplia", buscado.descripcion_amplia);
+      setValue("imagen",buscado.imagen);
+
+      console.log("buscado ",buscado);
+
+    }else
+    {
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: "Intentelo mas tarde",
+        icon: "error",
+      });
+    }
+  };
+
+  const productoValidado = async (producto) => {
+    //console.log(producto);
+    if (editar) {
+      const respuesta = await editarProductoAPI(id, producto);
     } else {
       const respuesta = await crearProductoAPI(producto);
       if (respuesta.status === 201) {

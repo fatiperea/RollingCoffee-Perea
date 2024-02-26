@@ -43,7 +43,7 @@ function App() {
           <Route
             exact
             path="administrador/editar/:id"
-            element={<CrearProducto editar={false} titulo="Editar producto"></CrearProducto>}
+            element={<CrearProducto editar={true} titulo="Editar producto"></CrearProducto>}
           ></Route>
           {/*<Route
             exact
