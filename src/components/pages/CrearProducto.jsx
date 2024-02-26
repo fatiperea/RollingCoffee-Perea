@@ -7,7 +7,7 @@ import {
 } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 
 const CrearProducto = ({ editar, titulo }) => {
   const {

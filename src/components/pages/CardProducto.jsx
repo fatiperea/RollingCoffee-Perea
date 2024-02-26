@@ -13,9 +13,9 @@ const CardProducto = ({producto}) => {
             <b>Precio: {producto.precio}$</b>
           </Card.Text>
 
-          <Button className="btnColor" as={Link} to={"/detalle"}>
+          <Link className=" btn btn-success btnColor"  to={"/detalle/"+producto.id}>
             Ver mas
-          </Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>

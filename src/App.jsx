@@ -32,7 +32,7 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/detalle"
+            path="/detalle/:id"
             element={<Detalle></Detalle>}
           ></Route>
           <Route
