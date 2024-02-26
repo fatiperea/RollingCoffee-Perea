@@ -1,9 +1,13 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearProductoAPI, leerUnProduAPI, editarProductoAPI } from "../../helpers/queries";
+import {
+  crearProductoAPI,
+  leerUnProduAPI,
+  editarProductoAPI,
+} from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
 const CrearProducto = ({ editar, titulo }) => {
   const {
@@ -11,37 +15,33 @@ const CrearProducto = ({ editar, titulo }) => {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue
+    setValue,
   } = useForm();
 
   const { id } = useParams();
+  const navegar = useNavigate();
 
   useEffect(() => {
-    
     if (editar) {
-      
       cargarForm();
     }
   }, []);
 
   const cargarForm = async () => {
-    console.log("ESTE ES EL ID",id);
+    console.log("ESTE ES EL ID", id);
     const respuesta = await leerUnProduAPI(id);
-    if(respuesta.status === 200)
-    {
-      const buscado=await respuesta.json();
-      console.log("buscado: ",buscado);
+    if (respuesta.status === 200) {
+      const buscado = await respuesta.json();
+      console.log("buscado: ", buscado);
       setValue("nombreProducto", buscado.nombreProducto);
       setValue("precio", buscado.precio);
-      setValue("categoria",buscado.categoria);
+      setValue("categoria", buscado.categoria);
       setValue("descripcion_breve", buscado.descripcion_breve);
       setValue("descripcion_amplia", buscado.descripcion_amplia);
-      setValue("imagen",buscado.imagen);
+      setValue("imagen", buscado.imagen);
 
-      console.log("buscado ",buscado);
-
-    }else
-    {
+      console.log("buscado ", buscado);
+    } else {
       Swal.fire({
         title: "Ocurrio un error",
         text: "Intentelo mas tarde",
@@ -52,27 +52,46 @@ const CrearProducto = ({ editar, titulo }) => {
 
   const productoValidado = async (producto) => {
     //console.log(producto);
-    if (editar) {
-      const respuesta = await editarProductoAPI(id, producto);
-    } else {
-      const respuesta = await crearProductoAPI(producto);
-      if (respuesta.status === 201) {
-        //mensaje para el usuario
-        //console.log("producto creado");
-        Swal.fire({
-          title: "Producto creado",
-          text: `El producto" ${producto.nombreProducto}" fue creado correctamente`,
-          icon: "success",
-        });
-        reset();
+
+    try {
+      if (editar) {
+        const respuesta = await editarProductoAPI(id, producto);
+        if (respuesta.status === 200) {
+          Swal.fire({
+            title: "Producto editado",
+            text: `El producto" ${producto.nombreProducto}" fue editado correctamente`,
+            icon: "success",
+          });
+          navegar("/administrador");
+        } else {
+          Swal.fire({
+            title: "Ocurrio un error",
+            text: "Intente editar mas tarde",
+            icon: "error",
+          });
+        }
       } else {
-        //console.log("ocurrio un error");
-        Swal.fire({
-          title: "Ocurrio un error",
-          text: "Intentelo mas tarde",
-          icon: "error",
-        });
+        const respuesta = await crearProductoAPI(producto);
+        if (respuesta.status === 201) {
+          //mensaje para el usuario
+          //console.log("producto creado");
+          Swal.fire({
+            title: "Producto creado",
+            text: `El producto" ${producto.nombreProducto}" fue creado correctamente`,
+            icon: "success",
+          });
+          reset();
+        } else {
+          //console.log("ocurrio un error");
+          Swal.fire({
+            title: "Ocurrio un error",
+            text: "Intentelo mas tarde",
+            icon: "error",
+          });
+        }
       }
+    } catch (error) {
+      console.log(error);
     }
   };
 
