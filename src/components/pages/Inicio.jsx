@@ -7,19 +7,20 @@ import { Link } from "react-router-dom";
 //const imgb='https://www.istockphoto.com/es/foto/tazas-de-caf%C3%A9-gm472113574-63201109'
 
 const Inicio = () => {
+  const [productos, setProductos] = useState([]);
 
-  /*const [productos, setProductos] = useState([]);
- 
   useEffect(() => {
-    traerProductos();
+    traerProductosInicio();
   }, []);
 
-  const traerProductos=async()=>{
-    try{
-      const listaProduAPI= await leerProduAPI();
-      setProductos(listaProduAPI);
-    }catch(error){console.log(error)}
-  }*/
+  const traerProductosInicio = async () => {
+    try {
+      const ProduInicioAPI = await leerProduAPI();
+      setProductos(ProduInicioAPI);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section>
@@ -39,7 +40,9 @@ const Inicio = () => {
                   <b>Precio: $</b>
                 </Card.Text>
 
-                <Button className="btnColor" as={Link} to={"/detalle"}>Ver mas</Button>
+                <Button className="btnColor" as={Link} to={"/detalle"}>
+                  Ver mas
+                </Button>
               </Card.Body>
             </Card>
           </Col>
@@ -67,7 +70,9 @@ const Inicio = () => {
                   Descripcion: <br />
                   <b>Precio: $</b>
                 </Card.Text>
-                <Button className="btnColor" as={Link} to={"/detalle"}>Ver mas</Button>
+                <Button className="btnColor" as={Link} to={"/detalle"}>
+                  Ver mas
+                </Button>
               </Card.Body>
             </Card>
           </Col>
