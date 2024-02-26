@@ -2,20 +2,23 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm();
-
-const onSubmit = (data) => {
-  console.log(data);
-};
 
 const Login = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  
+
   return (
     <div>
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Ingrese email"
