@@ -70,3 +70,17 @@ export const editarProductoAPI = async(id, producto) =>{
       console.log(error)
   }
 }
+
+const admin={
+  email:"admin@rollingcode.com",
+  password:"123Aa123",
+}
+
+export const login=(usuario)=> {
+
+  if(usuario.email === admin.email && usuario.password === admin.password)
+  {
+    sessionStorage.setItem("InicioSesionRC", JSON.stringify(usuario.email));
+    return true
+  }else return false;
+}
