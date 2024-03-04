@@ -13,24 +13,30 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Detalle from "./components/pages/Detalle";
 import CrearProducto from "./components/pages/CrearProducto";
 import Login from "./components/pages/Login";
-
+import RutasProteg from "./components/routes/RutasProteg";
+import RutasAdmin from "./components/routes/RutasAdmin";
+import { useState } from "react";
 
 function App() {
-
-  const usuario=JSON.parse(sessionStorage.getItem("InicioSesionRC")) || "";
+  const usuario = JSON.parse(sessionStorage.getItem("InicioSesionRC")) || "";
   const [logueado, setLogueado] = useState(usuario);
 
   return (
     <BrowserRouter>
       <Menu logueado={logueado}></Menu>
-      
+
       <Container className="contenPrincipal container-fluid">
         <Routes>
           <Route exact path="/" element={<Inicio></Inicio>}></Route>
           <Route
             exact
             path="/administrador/*"
-            element={<Administrador></Administrador>}
+            element={
+              <RutasProteg>
+                {" "}
+                <RutasAdmin></RutasAdmin>{" "}
+              </RutasProteg>
+            }
           ></Route>
           <Route
             exact
@@ -48,15 +54,10 @@ function App() {
             path="administrador/editar/:id"
             element={<CrearProducto editar={true} titulo="Editar producto"></CrearProducto>}
           ></Route>*/}
-          
+
           <Route path="*" element={<Error404></Error404>}></Route>
-          <Route
-            exact
-            path="/login"
-            element={<Login></Login>}
-          ></Route>
+          <Route exact path="/login" element={<Login></Login>}></Route>
         </Routes>
-        
       </Container>
       <Footer></Footer>
     </BrowserRouter>
