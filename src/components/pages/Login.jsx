@@ -11,7 +11,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navegar=useNavigate("/administrador");
+  const navegar=useNavigate();
 
   const onSubmit = (dato) => {
     console.log(dato);
@@ -21,6 +21,7 @@ const Login = () => {
         text: "usuario logueado",
         icon: "success",
       });
+      navegar("/administrador");
     } else {
       Swal.fire({
         title: "Ocurrio un error",

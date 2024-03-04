@@ -3,7 +3,7 @@ import logo from '../assets/Coffee_Logo.png'
 import { Link, NavLink } from "react-router-dom";
 
 
-const Menu = () => {
+const Menu = ({logueado}) => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -15,7 +15,10 @@ const Menu = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <NavLink end className='nav-link' to={'/'}>Inicio</NavLink>
-            <NavLink className='nav-link' to={'/administrador'}>Admin</NavLink>
+            <NavLink className='nav-link' to={'/administrador'}>Administrador</NavLink>
+
+              {/*(logueado.length > 0)?():*/}
+
             <NavLink className='nav-link' to={'/login'}>Login</NavLink>
             <NavLink className='nav-link' to={'/registro'}>Registro</NavLink>
 

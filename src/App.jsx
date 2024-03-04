@@ -16,18 +16,20 @@ import Login from "./components/pages/Login";
 
 
 function App() {
-  //const [count, setCount] = useState(0)
+
+  const usuario=JSON.parse(sessionStorage.getItem("InicioSesionRC")) || "";
+  const [logueado, setLogueado] = useState(usuario);
 
   return (
     <BrowserRouter>
-      <Menu></Menu>
+      <Menu logueado={logueado}></Menu>
       
       <Container className="contenPrincipal container-fluid">
         <Routes>
           <Route exact path="/" element={<Inicio></Inicio>}></Route>
           <Route
             exact
-            path="/administrador"
+            path="/administrador/*"
             element={<Administrador></Administrador>}
           ></Route>
           <Route
@@ -35,6 +37,7 @@ function App() {
             path="/detalle/:id"
             element={<Detalle></Detalle>}
           ></Route>
+          {/*
           <Route
             exact
             path="administrador/crear"
@@ -44,12 +47,8 @@ function App() {
             exact
             path="administrador/editar/:id"
             element={<CrearProducto editar={true} titulo="Editar producto"></CrearProducto>}
-          ></Route>
-          {/*<Route
-            exact
-            path="/administrador/crear"
-            element={<Administrador></Administrador>}
-></Route>*/}
+          ></Route>*/}
+          
           <Route path="*" element={<Error404></Error404>}></Route>
           <Route
             exact
