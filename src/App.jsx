@@ -5,13 +5,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import Menu from "./components/Menu";
 import Inicio from "./components/pages/Inicio";
-import Administrador from "./components/pages/Administrador";
+//import Administrador from "./components/pages/Administrador";
 import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
 import Error404 from "./components/pages/Error404";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Detalle from "./components/pages/Detalle";
-import CrearProducto from "./components/pages/CrearProducto";
+//import CrearProducto from "./components/pages/CrearProducto";
 import Login from "./components/pages/Login";
 import RutasProteg from "./components/routes/RutasProteg";
 import RutasAdmin from "./components/routes/RutasAdmin";
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Menu logueado={logueado}></Menu>
+      <Menu logueado={logueado} setLogueado={setLogueado}></Menu>
 
       <Container className="contenPrincipal container-fluid">
         <Routes>
@@ -56,7 +56,7 @@ function App() {
           ></Route>*/}
 
           <Route path="*" element={<Error404></Error404>}></Route>
-          <Route exact path="/login" element={<Login></Login>}></Route>
+          <Route exact path="/login" element={<Login setLogueado={setLogueado}></Login>}></Route>
         </Routes>
       </Container>
       <Footer></Footer>

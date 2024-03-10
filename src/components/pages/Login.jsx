@@ -1,11 +1,12 @@
-import React from "react";
+
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { login } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+
+const Login = ({setLogueado}) => {
   const {
     register,
     handleSubmit,
@@ -13,14 +14,15 @@ const Login = () => {
   } = useForm();
   const navegar=useNavigate();
 
-  const onSubmit = (dato) => {
-    console.log(dato);
-    if (login(dato)) {
+  const onSubmit = (usuario) => {
+    //console.log(dato);
+    if (login(usuario)) {
       Swal.fire({
         title: "Usuario logueado",
         text: "usuario logueado",
         icon: "success",
       });
+      setLogueado(usuario);
       navegar("/administrador");
     } else {
       Swal.fire({
