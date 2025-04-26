@@ -16,5 +16,5 @@ npm run dev //para comenzar a ejecutar el proyecto en modo desarrollo
 
 ## Autor:
 
-| [<img src="https://avatars.githubusercontent.com/u/110072729?v=4" width=115><br><sub>Fátima Perea</sub>](https://github.com/fatiperea) 
+[<img src="https://avatars.githubusercontent.com/u/110072729?v=4" width=115><br><sub>**Fátima Perea**</sub>](https://github.com/fatiperea) 
 
